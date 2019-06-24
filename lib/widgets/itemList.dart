@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_livecoding/pages/photoDetailPage.dart';
 import 'package:flutter_livecoding/utils/assets.dart' as Assets;
 
 class ItemList extends StatelessWidget {
@@ -6,15 +7,27 @@ class ItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        ListTile(
-          title: Text('一つ目の写真'),
-          leading: Image.asset(
-            Assets.ASSET_FOX_IMAGE_QUARTER,
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+        Card(
+          child: InkWell(
+            child: Row(
+              children: <Widget>[
+                Image.asset(
+                  Assets.ASSET_FOX_IMAGE_QUARTER,
+                  width: 100.0,
+                  height: 100.0,
+                  fit: BoxFit.cover,
+                ),
+                Text('一つ目の写真'),
+              ],
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => PhotoDetailPage(),
+                ),
+              );
+            },
           ),
-          onTap: () {},
         ),
       ],
     );
