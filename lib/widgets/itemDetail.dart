@@ -20,10 +20,11 @@ class ItemDetail extends StatelessWidget {
             ),
           ),
           leading: IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+            icon: Icon(Icons.close),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
         SliverList(
           delegate: SliverChildListDelegate([
