@@ -11,11 +11,14 @@ class ItemList extends StatelessWidget {
           child: InkWell(
             child: Row(
               children: <Widget>[
-                Image.asset(
-                  Assets.ASSET_FOX_IMAGE_QUARTER,
-                  width: 100.0,
-                  height: 100.0,
-                  fit: BoxFit.cover,
+                Hero(
+                  tag: 'item1',
+                  child: Image.asset(
+                    Assets.ASSET_FOX_IMAGE_QUARTER,
+                    width: 100.0,
+                    height: 100.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

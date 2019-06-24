@@ -9,9 +9,12 @@ class ItemDetail extends StatelessWidget {
         SliverAppBar(
           expandedHeight: 250.0,
           flexibleSpace: FlexibleSpaceBar(
-            background: Image.asset(
-              Assets.ASSET_FOX_IMAGE_HALF,
-              fit: BoxFit.cover,
+            background: Hero(
+              tag: 'item1',
+              child: Image.asset(
+                Assets.ASSET_FOX_IMAGE_HALF,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
