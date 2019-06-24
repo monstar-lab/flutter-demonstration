@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_livecoding/pages/photoDetailPage.dart';
+import 'package:flutter_livecoding/utils/pageTransitions.dart';
 import 'package:flutter_livecoding/utils/assets.dart' as Assets;
 
 class ItemList extends StatelessWidget {
@@ -28,8 +29,8 @@ class ItemList extends StatelessWidget {
             ),
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => PhotoDetailPage(),
+                fadePageRoute(
+                  PhotoDetailPage(),
                 ),
               );
             },

@@ -7,7 +7,7 @@ class ItemDetail extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-          expandedHeight: 250.0,
+          expandedHeight: 300.0,
           flexibleSpace: FlexibleSpaceBar(
             background: Hero(
               tag: 'item1',
@@ -15,8 +15,15 @@ class ItemDetail extends StatelessWidget {
                 Assets.ASSET_FOX_IMAGE_HALF,
                 fit: BoxFit.cover,
               ),
+              createRectTween: (rect1, rect2) =>
+                  RectTween(begin: rect1, end: rect2),
             ),
           ),
+          leading: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         SliverList(
           delegate: SliverChildListDelegate([
