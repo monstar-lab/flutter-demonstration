@@ -17,7 +17,10 @@ class ItemList extends StatelessWidget {
                   height: 100.0,
                   fit: BoxFit.cover,
                 ),
-                Text('一つ目の写真'),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('一つ目の写真'),
+                ),
               ],
             ),
             onTap: () {
