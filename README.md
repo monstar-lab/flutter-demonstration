@@ -8,4 +8,5 @@
 - 新規アイテム作成フォーム実装
 
 ## デザイン参考
+- https://dribbble.com/shots/6286365-Photo-Explorer-App-UI
 - https://dribbble.com/shots/5765509-Recent-photo-album-page-concept
