@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_livecoding/utils/assets.dart' as Assets;
 
-class ItemDetail extends StatelessWidget {
+class DetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
