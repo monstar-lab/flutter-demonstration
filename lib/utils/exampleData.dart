@@ -5,6 +5,10 @@ const exampleData = <ExampleDataType>[
     name: 'きつね',
     assetPath: Assets.ASSET_FOX_IMAGE_QUARTER,
   ),
+  ExampleDataType(
+    name: 'きつね',
+    assetPath: Assets.ASSET_FOX_IMAGE_QUARTER,
+  ),
 ];
 
 class ExampleDataType {
