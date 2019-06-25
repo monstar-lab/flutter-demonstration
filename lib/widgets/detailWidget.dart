@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_livecoding/utils/assets.dart' as Assets;
 
 class DetailWidget extends StatelessWidget {
+  final item;
+  final int index;
+
+  DetailWidget({this.item, this.index});
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -10,9 +14,9 @@ class DetailWidget extends StatelessWidget {
           expandedHeight: 300.0,
           flexibleSpace: FlexibleSpaceBar(
             background: Hero(
-              tag: 'item1',
+              tag: index,
               child: Image.asset(
-                Assets.ASSET_FOX_IMAGE_HALF,
+                item.assetPath,
                 fit: BoxFit.cover,
               ),
               createRectTween: (rect1, rect2) =>
@@ -28,7 +32,7 @@ class DetailWidget extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildListDelegate([
-            ListTile(title: Text('きつね')),
+            ListTile(title: Text(item.name)),
           ]),
         ),
       ],
