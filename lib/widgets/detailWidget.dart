@@ -19,8 +19,6 @@ class DetailWidget extends StatelessWidget {
                 item.assetPath,
                 fit: BoxFit.cover,
               ),
-              createRectTween: (rect1, rect2) =>
-                  RectTween(begin: rect1, end: rect2),
             ),
           ),
           leading: IconButton(
