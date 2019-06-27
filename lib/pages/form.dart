@@ -11,11 +11,13 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   File _image;
   String _name;
+  String _date;
 
   @override
   initState() {
     super.initState();
     _name = '';
+    _date = '';
   }
 
   Future getImage() async {
@@ -34,12 +36,15 @@ class _FormPageState extends State<FormPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              ImageForm(
-                image: _image,
-                onPressed: () {
-                  getImage();
-                },
+              Center(
+                child: ImageForm(
+                  image: _image,
+                  onPressed: () {
+                    getImage();
+                  },
+                ),
               ),
               TextField(
                 decoration: InputDecoration(labelText: '写真のタイトル'),
@@ -48,6 +53,27 @@ class _FormPageState extends State<FormPage> {
                     _name = newName;
                   });
                 },
+              ),
+              Padding(padding: EdgeInsets.only(top: 8.0)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('撮影日'),
+                  RaisedButton(
+                    child: Text(_date),
+                    onPressed: () async {
+                      final date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now().subtract(Duration(days: 7)),
+                        firstDate: DateTime(2018),
+                        lastDate: DateTime.now(),
+                      );
+                      setState(() {
+                        _date = '${date.year}/${date.month}/${date.day}';
+                      });
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -68,12 +94,12 @@ class _FormPageState extends State<FormPage> {
         onPressed: (_image == null)
             ? null
             : () {
-                try{
+                try {
                   saveImage(
                     image: _image,
                     name: _name,
                   );
-                } catch(e) {
+                } catch (e) {
                   print(e);
                 }
                 Navigator.of(context).pop();
