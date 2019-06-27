@@ -6,8 +6,8 @@ const exampleData = <ExampleDataType>[
     assetPath: Assets.ASSET_FOX_IMAGE_QUARTER,
   ),
   ExampleDataType(
-    name: 'きつね',
-    assetPath: Assets.ASSET_FOX_IMAGE_QUARTER,
+    name: 'フェレット',
+    assetPath: Assets.ASSET_FERRET_IMAGE_QUARTER,
   ),
 ];
 

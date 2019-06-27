@@ -40,8 +40,8 @@ class ListItem extends StatelessWidget {
                 tag: index,
                 child: Image.asset(
                   item.assetPath,
-                  width: 100.0,
-                  height: 100.0,
+                  width: 150.0,
+                  height: 150.0,
                   fit: BoxFit.cover,
                 ),
               ),
