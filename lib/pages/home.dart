@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_livecoding/widgets/listWidget.dart';
 import 'package:flutter_livecoding/pages/form.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,9 @@ class HomePage extends StatelessWidget {
         child: Row(children: <Widget>[
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {});
+            },
           ),
         ]),
       ),

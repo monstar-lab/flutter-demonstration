@@ -12,11 +12,19 @@ class DetailWidget extends StatelessWidget {
       children: <Widget>[
         Hero(
           tag: index,
-          child: Image.asset(
-            item.assetPath,
-            fit: BoxFit.cover,
-            height: 400.0,
-          ),
+          child: (item.assetPath is String)
+              ? Image.asset(
+                  item.assetPath,
+                  fit: BoxFit.cover,
+                  height: 400.0,
+                  width: MediaQuery.of(context).size.width,
+                )
+              : Image.file(
+                  item.assetPath,
+                  fit: BoxFit.cover,
+                  height: 400.0,
+                  width: MediaQuery.of(context).size.width,
+                ),
         ),
         Scaffold(
           appBar: AppBar(

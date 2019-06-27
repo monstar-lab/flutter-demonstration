@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_livecoding/pages/photoDetailPage.dart';
 import 'package:flutter_livecoding/utils/pageTransitions.dart';
 import 'package:flutter_livecoding/utils/exampleData.dart';
+import 'package:flutter_livecoding/utils/localImages.dart';
 
 class ListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView.builder(
-        padding: EdgeInsets.all(20.0),
-        itemCount: exampleData.length,
-        itemBuilder: (context, index) => ListItem(
-              item: exampleData[index],
-              index: index,
-            ),
+      child: FutureBuilder<LoadedImages>(
+        future: loadImages(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            padding: EdgeInsets.all(20.0),
+//            itemCount: exampleData.length,
+            itemCount: snapshot.data.count,
+            itemBuilder: (context, index) => ListItem(
+//                  item: exampleData[index],
+                  item: snapshot.data.images[index],
+                  index: index,
+                ),
+          );
+        }
       ),
     );
   }
@@ -38,7 +46,8 @@ class ListItem extends StatelessWidget {
             children: <Widget>[
               Hero(
                 tag: index,
-                child: Image.asset(
+//                child: Image.asset(
+                child: Image.file(
                   item.assetPath,
                   width: 150.0,
                   height: 150.0,

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_livecoding/utils/localImages.dart';
 
 class FormPage extends StatefulWidget {
   @override
@@ -9,6 +10,13 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   File _image;
+  String _name;
+
+  @override
+  initState() {
+    super.initState();
+    _name = '';
+  }
 
   Future getImage() async {
     final image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -35,6 +43,11 @@ class _FormPageState extends State<FormPage> {
               ),
               TextField(
                 decoration: InputDecoration(labelText: '写真のタイトル'),
+                onChanged: (newName) {
+                  setState(() {
+                    _name = newName;
+                  });
+                },
               ),
             ],
           ),
@@ -52,7 +65,19 @@ class _FormPageState extends State<FormPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),
-        onPressed: () {},
+        onPressed: (_image == null)
+            ? null
+            : () {
+                try{
+                  saveImage(
+                    image: _image,
+                    name: _name,
+                  );
+                } catch(e) {
+                  print(e);
+                }
+                Navigator.of(context).pop();
+              },
       ),
     );
   }
