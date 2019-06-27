@@ -11,6 +11,7 @@ Future saveImage({File image, String name}) async {
   final imageCount = (prefs.getInt('count') ?? 0);
   await prefs.setString('image$imageCount', imagePath);
   await prefs.setString('name$imageCount', name ?? '');
+  await prefs.setString('date$imageCount', name ?? '');
   await prefs.setInt('count', imageCount + 1);
 
   return await image.copy(imagePath);
@@ -23,7 +24,8 @@ Future<LoadedImages> loadImages() async {
   for (var index = 0; index < count; index++) {
     final imagePath = prefs.getString('image$index');
     final name = prefs.getString('name$index');
-    final loadedImage = LoadedImage(name, File(imagePath));
+    final date = prefs.getString('date$index');
+    final loadedImage = LoadedImage(name, File(imagePath), date);
     imageList.add(loadedImage);
   }
 
@@ -39,7 +41,8 @@ class LoadedImages {
 
 class LoadedImage {
   final String name;
+  final String date;
   final File assetPath;
 
-  LoadedImage(this.name, this.assetPath);
+  LoadedImage(this.name, this.assetPath, this.date);
 }
