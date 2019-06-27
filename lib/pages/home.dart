@@ -8,10 +8,15 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: ListWidget(),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add), onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => FormPage()));
-      }),
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => FormPage(),
+                fullscreenDialog: true,
+              ),
+            );
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
