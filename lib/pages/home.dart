@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         shape: CircularNotchedRectangle(),
         child: Row(children: <Widget>[
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.refresh),
             onPressed: () {
               setState(() {});
             },
