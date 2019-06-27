@@ -8,30 +8,28 @@ class DetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          expandedHeight: 300.0,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Hero(
-              tag: index,
-              child: Image.asset(
-                item.assetPath,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+    return Stack(
+      children: <Widget>[
+        Hero(
+          tag: index,
+          child: Image.asset(
+            item.assetPath,
+            fit: BoxFit.cover,
+            height: 400.0,
           ),
         ),
-        SliverList(
-          delegate: SliverChildListDelegate([
-            ListTile(title: Text(item.name)),
-          ]),
+        Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+          body: Column(
+            children: <Widget>[
+              SizedBox(height: 360.0),
+              ListTile(title: Text(item.name)),
+            ],
+          ),
+          backgroundColor: Colors.transparent,
         ),
       ],
     );
