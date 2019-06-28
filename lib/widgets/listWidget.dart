@@ -53,14 +53,7 @@ class ListItem extends StatelessWidget {
             ],
           ),
           onTap: () {
-            Navigator.of(context).push(
-              fadePageRoute(
-                PhotoDetailPage(
-                  item: item,
-                  index: index,
-                ),
-              ),
-            );
+            // TODO: 詳細ページへの遷移
           },
         ),
       ),
