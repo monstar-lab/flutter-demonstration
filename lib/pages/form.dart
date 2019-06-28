@@ -72,34 +72,32 @@ class ImageForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20.0),
-      child: GestureDetector(
-        onTap: onPressed,
-        child: (image == null)
-            ? Container(
-                height: 300.0,
-                width: 300.0,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  image: DecorationImage(
-                    image: FileImage(image),
-                    fit: BoxFit.cover,
+    return Center(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: GestureDetector(
+          onTap: onPressed,
+          child: (image == null)
+              ? Container(
+                  height: 300.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                  ),
+                  child: Center(child: Icon(Icons.add_a_photo)),
+                )
+              : Container(
+                  height: 300.0,
+                  width: 300.0,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    image: DecorationImage(
+                      image: FileImage(image),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                child: Center(child: Icon(Icons.add_a_photo)),
-              )
-            : Container(
-                height: 300.0,
-                width: 300.0,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  image: DecorationImage(
-                    image: FileImage(image),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+        ),
       ),
     );
   }
