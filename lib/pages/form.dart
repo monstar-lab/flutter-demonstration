@@ -38,43 +38,10 @@ class _FormPageState extends State<FormPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Center(
-                child: ImageForm(
-                  image: _image,
-                  onPressed: () {
-                    getImage();
-                  },
-                ),
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: '写真のタイトル'),
-                onChanged: (newName) {
-                  setState(() {
-                    _name = newName;
-                  });
-                },
-              ),
-              Padding(padding: EdgeInsets.only(top: 8.0)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('撮影日'),
-                  RaisedButton(
-                    child: Text(_date),
-                    onPressed: () async {
-                      final date = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now().subtract(Duration(days: 7)),
-                        firstDate: DateTime(2018),
-                        lastDate: DateTime.now(),
-                      );
-                      setState(() {
-                        _date = '${date.year}/${date.month}/${date.day}';
-                      });
-                    },
-                  ),
-                ],
-              ),
+              Container(),
+              // TODO: 写真投稿用フォーム作成
+              // TODO: "写真のタイトル"フォーム作成
+              // TODO: 撮影日入力フォーム作成
             ],
           ),
         ),
@@ -89,22 +56,7 @@ class _FormPageState extends State<FormPage> {
           ),
         ]),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save),
-        onPressed: (_image == null)
-            ? null
-            : () {
-                try {
-                  saveImage(
-                    image: _image,
-                    name: _name,
-                  );
-                } catch (e) {
-                  print(e);
-                }
-                Navigator.of(context).pop();
-              },
-      ),
+      // TODO: 投稿ボタン作成
     );
   }
 }
@@ -124,19 +76,30 @@ class ImageForm extends StatelessWidget {
       borderRadius: BorderRadius.circular(20.0),
       child: GestureDetector(
         onTap: onPressed,
-        child: Container(
-          height: 300.0,
-          width: 300.0,
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            image: (image == null)
-                ? null
-                : DecorationImage(
+        child: (image == null)
+            ? Container(
+                height: 300.0,
+                width: 300.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  image: DecorationImage(
                     image: FileImage(image),
                     fit: BoxFit.cover,
                   ),
-          ),
-        ),
+                ),
+                child: Center(child: Icon(Icons.add_a_photo)),
+              )
+            : Container(
+                height: 300.0,
+                width: 300.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  image: DecorationImage(
+                    image: FileImage(image),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
       ),
     );
   }
