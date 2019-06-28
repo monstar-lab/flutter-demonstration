@@ -10,22 +10,8 @@ class DetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Hero(
-          tag: index,
-          child: (item.assetPath is String)
-              ? Image.asset(
-                  item.assetPath,
-                  fit: BoxFit.cover,
-                  height: 400.0,
-                  width: MediaQuery.of(context).size.width,
-                )
-              : Image.file(
-                  item.assetPath,
-                  fit: BoxFit.cover,
-                  height: 400.0,
-                  width: MediaQuery.of(context).size.width,
-                ),
-        ),
+        // TODO: Heroの追加
+        ItemImage(image: item.assetPath),
         Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,
@@ -41,5 +27,28 @@ class DetailWidget extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class ItemImage extends StatelessWidget {
+  final image;
+
+  ItemImage({this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return (image is String)
+        ? Image.asset(
+            image,
+            fit: BoxFit.cover,
+            height: 400.0,
+            width: MediaQuery.of(context).size.width,
+          )
+        : Image.file(
+            image,
+            fit: BoxFit.cover,
+            height: 400.0,
+            width: MediaQuery.of(context).size.width,
+          );
   }
 }

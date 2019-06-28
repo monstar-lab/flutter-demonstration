@@ -13,15 +13,15 @@ class ListWidget extends StatelessWidget {
         builder: (context, snapshot) {
           return ListView.builder(
             padding: EdgeInsets.all(20.0),
-//            itemCount: exampleData.length,
-            itemCount: snapshot.data.count,
+            // TODO: iPhone内の画像を使用
+            itemCount: exampleData.length,
             itemBuilder: (context, index) => ListItem(
-//                  item: exampleData[index],
-                  item: snapshot.data.images[index],
+                  // TODO: iPhone内の画像を使用
+                  item: exampleData[index],
                   index: index,
                 ),
           );
-        }
+        },
       ),
     );
   }
@@ -44,16 +44,8 @@ class ListItem extends StatelessWidget {
         child: InkWell(
           child: Row(
             children: <Widget>[
-              Hero(
-                tag: index,
-//                child: Image.asset(
-                child: Image.file(
-                  item.assetPath,
-                  width: 150.0,
-                  height: 150.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              // TODO: Heroの追加
+              ItemImage(image: item.assetPath),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(item.name),
@@ -73,5 +65,28 @@ class ListItem extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ItemImage extends StatelessWidget {
+  final image;
+
+  ItemImage({this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return (image is String)
+        ? Image.asset(
+            image,
+            fit: BoxFit.cover,
+            height: 150.0,
+            width: 150.0,
+          )
+        : Image.file(
+            image,
+            fit: BoxFit.cover,
+            height: 150.0,
+            width: 150.0,
+          );
   }
 }

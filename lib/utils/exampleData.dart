@@ -9,6 +9,14 @@ const exampleData = <ExampleDataType>[
     name: 'フェレット',
     assetPath: Assets.ASSET_FERRET_IMAGE_QUARTER,
   ),
+  ExampleDataType(
+    name: 'きつね',
+    assetPath: Assets.ASSET_FOX_IMAGE_QUARTER,
+  ),
+  ExampleDataType(
+    name: 'フェレット',
+    assetPath: Assets.ASSET_FERRET_IMAGE_QUARTER,
+  ),
 ];
 
 class ExampleDataType {
