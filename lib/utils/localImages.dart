@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future saveImage({File image, String name}) async {
+Future saveImage({File image, String name, String date}) async {
   final path = (await getApplicationDocumentsDirectory()).path;
   final now = DateTime.now().toString();
   final imagePath = '$path/image_$now.png';
@@ -11,7 +11,7 @@ Future saveImage({File image, String name}) async {
   final imageCount = (prefs.getInt('count') ?? 0);
   await prefs.setString('image$imageCount', imagePath);
   await prefs.setString('name$imageCount', name ?? '');
-  await prefs.setString('date$imageCount', name ?? '');
+  await prefs.setString('date$imageCount', date ?? '');
   await prefs.setInt('count', imageCount + 1);
 
   return await image.copy(imagePath);

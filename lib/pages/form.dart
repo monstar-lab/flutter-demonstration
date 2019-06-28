@@ -56,7 +56,16 @@ class _FormPageState extends State<FormPage> {
           ),
         ]),
       ),
-      // TODO: 投稿ボタン作成
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.save),
+        onPressed: () {
+          saveImage(
+            image: _image,
+            name: _name,
+            date: _date,
+          );
+        },
+      ),
     );
   }
 }
