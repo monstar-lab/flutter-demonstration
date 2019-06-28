@@ -15,12 +15,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => FormPage(),
-              fullscreenDialog: true,
-            ),
-          );
+          // TODO: 投稿フォームへの遷移
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
